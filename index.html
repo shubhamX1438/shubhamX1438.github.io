@@ -216,10 +216,52 @@
                 margin-bottom: 2rem;
             }
         }
+        [data-theme="dark"] {
+        --primary: #4a90e2;
+        --secondary: #9b59b6;
+        --dark: #2c3e50;
+        --light: #ecf0f1;
+        background: linear-gradient(135deg, var(--dark), #1a1a2e);
+        color: var(--light);
+    }
+
+    [data-theme="light"] {
+        --primary: #2c3e50;
+        --secondary: #8e44ad;
+        --dark: #ecf0f1;
+        --light: #2c3e50;
+        background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+        color: var(--dark);
+    }
+
+    body {
+        transition: background 0.5s, color 0.5s;
+    }
+
+    .toggle-btn {
+        position: fixed;
+        top: 10px;
+        right: 10px;
+        background: var(--primary);
+        color: var(--light);
+        border: none;
+        padding: 10px 20px;
+        border-radius: 20px;
+        cursor: pointer;
+        font-size: 1rem;
+        transition: background 0.5s, color 0.5s;
+    }
+
+    .toggle-btn:hover {
+        background: var(--secondary);
+        color: var(--dark);
+    }
     </style>
 </head>
 <body>
     <nav class="mobile-nav">
+        <button class="toggle-btn" onclick="toggleTheme()">Toggle Theme</button>
+
         <div class="nav-icons">
             <a href="#home"><i class="fas fa-home"></i>Home</a>
             <a href="#experience"><i class="fas fa-briefcase"></i>Work</a>
@@ -228,11 +270,12 @@
             <a href="#projects"><i class="fas fa-project-diagram"></i>Projects</a>
         </div>
     </nav>
+    
 
     <section id="home" class="hero">
         <div class="container">
             <div class="profile-img">
-                <img src="https://github.com/shubhamX1438/shubhamx1438-profile/raw/main/profile.jpg" alt="Shubham Indulkar">
+                <img src="IMG_5107.JPG" alt="Shubham Indulkar">
             </div>
             <h1>Shubham Indulkar</h1>
             <p>Software Engineer & Data Scientist</p>
@@ -307,9 +350,23 @@
                 <div class="skill-tag"><i class="fab fa-python"></i>Python</div>
                 <div class="skill-tag"><i class="fab fa-java"></i>Java</div>
                 <div class="skill-tag"><i class="fab fa-golang"></i>Golang</div>
+                <div class="skill-tag"><i class="fab fa-html5"></i>HTML/CSS</div>
+                <div class="skill-tag"><i class="fab fa-js"></i>JavaScript</div>
+                <div class="skill-tag"><i class="fab fa-react"></i>React.js</div>
+                <div class="skill-tag"><i class="fab fa-node-js"></i>Node.js</div>
                 <div class="skill-tag"><i class="fab fa-aws"></i>AWS</div>
                 <div class="skill-tag"><i class="fab fa-docker"></i>Docker</div>
-                <div class="skill-tag"><i class="fas fa-database"></i>SQL</div>
+                <div class="skill-tag"><i class="fas fa-database"></i>MySQL</div>
+                <div class="skill-tag"><i class="fas fa-database"></i>Postgres</div>
+                <div class="skill-tag"><i class="fas fa-database"></i>MongoDB</div>
+                <div class="skill-tag"><i class="fas fa-database"></i>DynamoDB</div>
+                <div class="skill-tag"><i class="fab fa-apache"></i>Apache Spark</div>
+                <div class="skill-tag"><i class="fab fa-kubernetes"></i>Kubernetes</div>
+                <div class="skill-tag"><i class="fab fa-redhat"></i>Redshift</div>
+                <div class="skill-tag">TensorFlow</div>
+                <div class="skill-tag">Keras</div>
+                <div class="skill-tag">Kafka</div>
+                <div class="skill-tag">Hadoop</div>
             </div>
         </section>
 
@@ -347,6 +404,15 @@
                 });
             });
         });
+        
+    function toggleTheme() {
+        const body = document.body;
+        const currentTheme = body.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        body.setAttribute('data-theme', newTheme);
+    }
+
+
 
         const sections = document.querySelectorAll('section');
         const navLinks = document.querySelectorAll('.nav-icons a');
