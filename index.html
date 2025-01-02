@@ -3,156 +3,306 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shubham Sudhakar Indulkar</title>
+    <title>Shubham Indulkar - Portfolio</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        body {
-            font-family: 'Arial', sans-serif;
+        :root {
+            --primary: #4a90e2;
+            --secondary: #9b59b6;
+            --dark: #2c3e50;
+            --light: #ecf0f1;
+        }
+
+        * {
             margin: 0;
             padding: 0;
-            background-color: #f4f4f9;
-            color: #333;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--dark), #1a1a2e);
+            color: var(--light);
             line-height: 1.6;
         }
-        header {
-            background-color: #1e293b;
-            color: #f1f5f9;
-            padding: 20px;
-            text-align: center;
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
         }
-        header img {
-            border-radius: 50%;
+
+        /* Mobile Navigation */
+        .mobile-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem;
+        }
+
+        .nav-icons {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .nav-icons a {
+            color: var(--light);
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 0.8rem;
+            transition: color 0.3s;
+        }
+
+        .nav-icons i {
+            font-size: 1.5rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .nav-icons a:hover {
+            color: var(--primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem 1rem;
+        }
+
+        .profile-img {
             width: 150px;
             height: 150px;
-            margin-bottom: 10px;
+            border-radius: 50%;
+            margin: 0 auto 2rem;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            padding: 5px;
+            animation: float 3s ease-in-out infinite;
         }
-        header h1 {
-            margin: 0;
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
         }
+
+        .profile-img img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .social-links a {
+            color: var(--light);
+            font-size: 1.5rem;
+            transition: transform 0.3s;
+        }
+
+        .social-links a:hover {
+            transform: translateY(-3px);
+            color: var(--primary);
+        }
+
+        /* Cards */
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .card:active {
+            transform: scale(0.98);
+        }
+
+        .card i {
+            color: var(--primary);
+            margin-right: 0.5rem;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 1rem;
+        }
+
+        .skill-tag {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.5rem;
+            border-radius: 20px;
+            text-align: center;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .section-title i {
+            color: var(--primary);
+        }
+
         section {
-            padding: 20px;
-            margin: 20px auto;
-            max-width: 900px;
-            background: #ffffff;
-            border-radius: 12px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 3rem 0;
         }
-        h2 {
-            color: #1e293b;
+
+        /* Experience Timeline */
+        .timeline {
+            position: relative;
+            margin: 2rem 0;
         }
-        ul {
-            list-style-type: none;
-            padding: 0;
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 2px;
+            height: 100%;
+            background: var(--primary);
         }
-        ul li {
-            margin-bottom: 15px;
+
+        .experience-item {
+            padding-left: 2rem;
+            position: relative;
+            margin-bottom: 2rem;
         }
-        a {
-            color: #1d4ed8;
-            text-decoration: none;
-            font-weight: bold;
+
+        .experience-item::before {
+            content: '';
+            position: absolute;
+            left: -5px;
+            top: 0;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--primary);
         }
-        a:hover {
-            text-decoration: underline;
-        }
-        .project-description {
-            margin-top: 10px;
-            font-size: 0.9em;
-            color: #555;
+
+        @media (min-width: 768px) {
+            .skills-grid {
+                grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            }
+
+            .card {
+                margin-bottom: 2rem;
+            }
         }
     </style>
 </head>
 <body>
-    <header>
-        <img src="https://github.com/shubhamX1438/shubhamx1438-profile/blob/main/images/IMG_5107.JPG" alt="Shubham Sudhakar Indulkar">
-        <h1>Shubham Sudhakar Indulkar</h1>
-        <p>+1(480) 738-3062 | Tempe, AZ | <a href="mailto:sindulka@asu.edu">Email</a></p>
-        <p><a href="https://www.linkedin.com/in/shubhamindulkar1438/">LinkedIn</a> | <a href="https://leetcode.com/u/imshub143/">Leetcode</a> | <a href="https://github.com/shubhamX1438">GitHub</a></p>
-    </header>
+    <nav class="mobile-nav">
+        <div class="nav-icons">
+            <a href="#home"><i class="fas fa-home"></i>Home</a>
+            <a href="#experience"><i class="fas fa-briefcase"></i>Work</a>
+            <a href="#skills"><i class="fas fa-code"></i>Skills</a>
+            <a href="#projects"><i class="fas fa-project-diagram"></i>Projects</a>
+        </div>
+    </nav>
 
-    <section id="education">
-        <h2>Education</h2>
-        <ul>
-            <li>
-                <strong>Masters in Computer Science</strong> - Arizona State University <br>
-                GPA: 4.0<br>
-                Relevant Coursework: Data Processing at Scale, Mobile Computing, Data Mining, Statistical Machine Learning
-            </li>
-            <li>
-                <strong>B.Tech in Electronics and Telecommunication</strong> - VIT, Pune, India<br>
-                Relevant Coursework: Data Structures and Algorithms, Object-Oriented Programming
-            </li>
-        </ul>
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="profile-img">
+                <img src="https://github.com/shubhamX1438/shubhamx1438-profile/raw/main/profile.jpg" alt="Shubham Indulkar">
+            </div>
+            <h1>Shubham Indulkar</h1>
+            <p>Software Engineer & Data Scientist</p>
+            <div class="social-links">
+                <a href="https://github.com/shubhamX1438"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/shubhamindulkar1438/"><i class="fab fa-linkedin"></i></a>
+                <a href="mailto:shubham.email@example.com"><i class="fas fa-envelope"></i></a>
+                <a href="https://leetcode.com/u/imshub143/"><i class="fab fa-leetcode"></i></a>
+            </div>
+        </div>
     </section>
 
-    <section id="skills">
-        <h2>Technical Skills</h2>
-        <ul>
-            <li><strong>Programming Skills:</strong> Python, Java, Ruby, Golang, HTML/CSS, Tableau, MySQL, Postgres</li>
-            <li><strong>Frameworks and Platforms:</strong> Apache Spark, Hive, Hadoop, Kafka, Git, Redshift, Cloud Networking</li>
-            <li><strong>Cloud Technologies:</strong> AWS (IAM, EC2, Lambda, EKS, CodePipeline), Docker, Kubernetes, Azure</li>
-            <li><strong>Databases:</strong> MySQL, PostgresSQL, Amazon DynamoDB, MongoDB, HiveSQL</li>
-            <li><strong>Software Development:</strong> Agile, DevOps, Rapid</li>
-            <li><strong>Libraries:</strong> React.js, D3.js, Keras, TensorFlow, CNN, K-Means, SVM, Node.js</li>
-        </ul>
-    </section>
+    <main class="container">
+        <section id="skills">
+            <h2 class="section-title"><i class="fas fa-code"></i>Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-tag"><i class="fab fa-python"></i>Python</div>
+                <div class="skill-tag"><i class="fab fa-java"></i>Java</div>
+                <div class="skill-tag"><i class="fab fa-golang"></i>Golang</div>
+                <div class="skill-tag"><i class="fab fa-aws"></i>AWS</div>
+                <div class="skill-tag"><i class="fab fa-docker"></i>Docker</div>
+                <div class="skill-tag"><i class="fas fa-database"></i>SQL</div>
+            </div>
+        </section>
 
-    <section id="experience">
-        <h2>Work Experience</h2>
-        <ul>
-            <li>
-                <strong>Software Engineer II</strong> - University of Phoenix, Phoenix, Arizona, USA (05/23 to Present)<br>
-                - Implemented web applications in Java Spring Boot backend ensuring seamless deployment on AWS EKS.<br>
-                - Migrated tomcat services to AWS using Kubernetes, autoscaling on AWS ECS cloud infrastructure.
-            </li>
-            <li>
-                <strong>Data Engineer</strong> - Arizona State University, Tempe, Arizona, USA (01/23 to 05/23)<br>
-                - Revamped ASU website from ColdFusion, WordPress to React.js and Node.js with DynamoDB backend.
-            </li>
-            <li>
-                <strong>Data Engineer II</strong> - IBM, Pune, India (11/21 to 05/22)<br>
-                - Developed aggregate functionalities processing users' prepaid/postpaid billing data.
-                - Maintained client relations, business requirement daily, developed Python scripts on Azure infrastructure.
-            </li>
-            <li>
-                <strong>Associate Software Engineer</strong> - Accenture, Chennai, India (09/19 to 11/21)<br>
-                - Developed a healthcare AWS ETL CICD pipeline for ingesting FHIR data to Elastic Search data warehouse.
-                - Improved performance by implementing dynamic resource allocation in AWS Glue Jobs.
-            </li>
-            <li>
-                <strong>Software Intern</strong> - Indicus Software Pvt. Ltd., Pune, India (06/18 to 11/18)<br>
-                - Designed frameworks for collecting Android sensor data and Computer Vision applications.
-            </li>
-        </ul>
-    </section>
+        <section id="projects">
+            <h2 class="section-title"><i class="fas fa-project-diagram"></i>Projects</h2>
+            <div class="card">
+                <h3><i class="fas fa-chart-line"></i>Gold Price Prediction</h3>
+                <p>Empirical Analysis methods for building Gold Price Prediction systems have become a crucial area of research...</p>
+            </div>
+            <div class="card">
+                <h3><i class="fas fa-shield-alt"></i>Fraud Detection</h3>
+                <p>Real-time fraud detection system leveraging machine learning and graph databases...</p>
+            </div>
+            <div class="card">
+                <h3><i class="fas fa-car-crash"></i>Autonomous Vehicle Collision Detection</h3>
+                <p>This project focuses on creating a safety framework for autonomous vehicles...</p>
+            </div>
+        </section>
+    </main>
 
-    <section id="projects">
-        <h2>Projects</h2>
-        <ul>
-            <li>
-                <a href="https://github.com/shubhamX1438/shubhamx1438-profile"><strong>Gold Price Prediction</strong></a>
-                <p class="project-description">Empirical Analysis methods for building Gold Price Prediction systems have become a crucial area of research in recent years...<br> [Description truncated for brevity]</p>
-            </li>
-            <li>
-                <a href="https://github.com/shubhamX1438/shubhamx1438-profile"><strong>Autonomous Vehicle Collision Detection</strong></a>
-                <p class="project-description">This project endeavors to create a safety-driven framework tailored for autonomous vehicles...</p>
-            </li>
-            <li>
-                <a href="https://github.com/shubhamX1438/shubhamx1438-profile"><strong>Fraud Detection</strong></a>
-                <p class="project-description">As online banking transactions become increasingly popular, the threat of fraudulent activity...</p>
-            </li>
-            <li>
-                <a href="https://github.com/shubhamX1438/shubhamx1438-profile"><strong>Data Visualization - PEARL Emotion analysis</strong></a>
-                <p class="project-description">Millions engage daily on social media, leaving digital footprints of their emotions through posts and images...</p>
-            </li>
-            <li>
-                <a href="https://github.com/shubhamX1438/shubhamx1438-profile"><strong>Hotspot Analysis</strong></a>
-                <p class="project-description">For the hotspot analysis project, we specifically use SCALA and Spark to do all the magic...</p>
-            </li>
-            <li>
-                <a href="https://github.com/shubhamX1438/shubhamx1438-profile"><strong>Data Visualization - Linking charts</strong></a>
-                <p class="project-description">The purpose of this project is to give you practice interactively building and linking visualizations...</p>
-            </li>
-        </ul>
-    </section>
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-icons a');
+
+        const observerOptions = {
+            threshold: 0.3
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.getAttribute('id');
+                    navLinks.forEach(link => {
+                        link.style.color = link.getAttribute('href') === `#${id}` ? 'var(--primary)' : 'var(--light)';
+                    });
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => observer.observe(section));
+    </script>
 </body>
 </html>
